@@ -43,8 +43,11 @@ class LatestMovieRecyclerViewAdapter (
 
         Glide.with(holder.mView)
             .load("https://image.tmdb.org/t/p/w500/${movie.posterImageUrl}")
-            .centerInside()
+            .placeholder(R.drawable.ic_launcher_background)
+            .error(R.drawable.ic_launcher_background)
+            .centerCrop()
             .into(holder.mMovieImage)
+
 
         holder.mView.setOnClickListener {
             holder.mItem?.let { movie -> mListener?.onItemClick(movie)}
