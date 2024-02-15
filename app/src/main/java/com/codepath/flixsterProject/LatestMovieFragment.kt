@@ -38,12 +38,10 @@ class LatestMovieFragment : Fragment(), OnListFragmentInteractionListener {
     private fun updateAdapter(progressBar: ContentLoadingProgressBar, recyclerView: RecyclerView) {
         progressBar.show()
 
-        // Create and set up an AsyncHTTPClient() here
         val client = AsyncHttpClient()
         val params = RequestParams()
         params["api_key"] = API_KEY
 
-        // Using the client, perform the HTTP request
         client[BASE_URL, params, object : JsonHttpResponseHandler()
             {
                 override fun onSuccess(
@@ -51,31 +49,21 @@ class LatestMovieFragment : Fragment(), OnListFragmentInteractionListener {
                     headers: Headers,
                     json: JsonHttpResponseHandler.JSON
                 ) {
-                    //progressBar.hide()
+                    progressBar.hide()
                     val jsonString = json.toString()
                     val jsonData = jsonString.substring("jsonObject=".length)
                     val jsonObject = JSONObject(jsonData)
-                    //val moviesArray = jsonObject.getJSONArray("results")
+
                     val movieRawJSON : String = jsonObject.get("results").toString()
                     val arrayMovieType = object : TypeToken<List<LatestMovie>>() {}.type
-                    /*val resultsJSON : JSONObject = json.jsonObject as JSONObject
-                    val moviesRawJSON : String = resultsJSON.get("results").toString()*/
-                    //val arrayMovie = object : TypeToken<List<LatestMovie>>() {}.type
+
                     val gson = Gson()
 
                     val movies : MutableList<LatestMovie> = gson.fromJson(movieRawJSON, arrayMovieType)
                     recyclerView.adapter = LatestMovieRecyclerViewAdapter(movies, this@LatestMovieFragment)
                     progressBar.hide()
                     Log.d("LatestMovieFragment", "response successful")
-                   /*
-                    try {
-                        val movies = parseTmdbResponse(json)
-                        recyclerView.adapter = LatestMovieRecyclerViewAdapter(movies, this@LatestMovieFragment)
-                        progressBar.hide()
-                        Log.d("LatestMovieFragment", "response successful")
-                    } catch (e: Exception) {
-                        Log.e("MoviesFragment", "Error parsing JSON: ${e.message}")
-                    } */
+
 
                 }
 
@@ -85,7 +73,7 @@ class LatestMovieFragment : Fragment(), OnListFragmentInteractionListener {
                     errorResponse: String,
                     t: Throwable?
                 ) {
-                    //progressBar.hide()
+                    progressBar.hide()
 
                     t?.message?.let {
                         Log.e("LatestMovieFragment", errorResponse)
@@ -99,50 +87,5 @@ class LatestMovieFragment : Fragment(), OnListFragmentInteractionListener {
     override fun onItemClick(item: LatestMovie) {
         Toast.makeText(context, "test: " + item.title, Toast.LENGTH_LONG).show()
     }
-    /*data class TmdbResponse(
-        val results: List<LatestMovie>
-    )
 
-    private fun parseTmdbResponse(json: JsonHttpResponseHandler.JSON): List<LatestMovie> {
-        val movieList = mutableListOf<LatestMovie>()
-
-        try {
-            val jsonString = json.toString() // Convert the JSON response to a string
-
-            // Check if the string starts with "jsonObject="
-            if (jsonString.startsWith("jsonObject=")) {
-                // Remove the prefix to get the JSON data
-                val jsonData = jsonString.substring("jsonObject=".length)
-
-                // Create a JSON object from the JSON data
-                val jsonObject = JSONObject(jsonData)
-
-                // Extract the "results" array
-                val resultsArray = jsonObject.getJSONArray("results")
-
-                val gson = Gson()
-
-                for (i in 0 until resultsArray.length()) {
-                    val movieResponse = resultsArray.getJSONObject(i)
-                    val title = movieResponse.getString("title")
-                    val posterPath = movieResponse.getString("poster_path")
-                    val overview = movieResponse.getString("overview") // Extract the overview
-
-                    val movieInfo = LatestMovie(title = title, posterImageUrl = posterPath, overview = overview)
-
-                    movieList.add(movieInfo)
-                }
-
-                Log.d("MoviesFragment", "Number of movies: ${movieList.size}")
-            } else {
-                Log.e("MoviesFragment", "Invalid JSON format: $jsonString")
-            }
-        } catch (e: Exception) {
-            Log.e("MoviesFragment", "Error parsing JSON: ${e.message}")
-            Log.e("MoviesFragment", "JSON Response: ${json.toString()}")
-        }
-
-        // Return the list of InTheatersMovie objects
-        return movieList
-    }*/
 }
