@@ -45,7 +45,7 @@ I had challenges getting connectivity to the internet and my app not crashing on
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2023] [Alex Zugaj]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
