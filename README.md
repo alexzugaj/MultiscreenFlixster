@@ -1,26 +1,26 @@
-# Android Project 3 - Flixster Movie Database
+# Android Project 4 - *Name of App Here*
 
-Submitted by: Alexander Zugaj
+Submitted by: **Alexander Zugaj**
 
-Flixster Movie Database is a movie browsing app that allows users to browse movies currently playing in theaters.
+**Name of your app** is a movie browsing app that allows users to browse ... [TODO] 
 
-Time spent: 10 hours spent in total
+Time spent: **X** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [X] **Make a request to [The Movie Database API's `now_playing`](https://developers.themoviedb.org/3/movies/get-now-playing) endpoint to get a list of current movies**
-- [X] **Parse through JSON data and implement a RecyclerView to display all movies**
-- [X] **Use Glide to load and display movie poster images**
+- [ ] **Choose any endpoint on The MovieDB API except `now_playing`**
+  - Chosen Endpoint: `[TODO: FILL ME IN TO GET CREDIT]`
+- [] **Make a request to your chosen endpoint and implement a RecyclerView to display all entries**
+- [ ] **Use Glide to load and display at least one image per entry**
+- [ ] **Click on an entry to view specific details about that entry using Intents**
 
 The following **optional** features are implemented:
 
-- [X] Improve and customize the user interface through styling and coloring
-- [ ] Implement orientation responsivity
-  - App should neatly arrange data in both landscape and portrait mode
-- [X] Implement Glide to display placeholder graphics during loading
-  - Note: this feature is difficult to capture in a GIF without throttling internet speeds.  Instead, include an additional screencap of your Glide code implementing the feature.  (<10 lines of code)
+- [ ] **Add another API call and RecyclerView that lets the user interact with different data.** 
+- [ ] **Add rounded corners to the images using the Glide transformations**
+- [ ] **Implement a shared element transition when user clicks into the details of a movie**
 
 The following **additional** features are implemented:
 
@@ -30,10 +30,10 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://i.imgur.com/2uXqsfA.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  [ScreenToGif](https://www.screentogif.com/) for Windows
+GIF created with ...  
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
@@ -41,11 +41,11 @@ GIF created with ...  [ScreenToGif](https://www.screentogif.com/) for Windows
 
 ## Notes
 
-I had challenges getting connectivity to the internet and my app not crashing on boot.
+Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [2023] [Alex Zugaj]
+    Copyright 2024 Alex Zugaj
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
