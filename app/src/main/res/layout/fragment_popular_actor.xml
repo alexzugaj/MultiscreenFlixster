@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:layout_margin="6dp">
     <ImageView
-        android:id="@+id/movie_poster"
+        android:id="@+id/actor_image"
         android:layout_width="wrap_content"
         android:layout_height="180dp"
         android:layout_margin="5dp"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
-        android:id="@+id/movie_title"
+        android:id="@+id/actor_name"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -27,23 +27,9 @@
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/movie_poster"
+        app:layout_constraintStart_toEndOf="@+id/actor_image"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/movie_desc"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:ellipsize="end"
-        android:fontFamily="sans-serif-light"
-        android:lines="6"
-        android:textAppearance="?attr/textAppearanceListItem"
-        android:textSize="16sp"
-        android:layout_gravity="start"
-        app:layout_constraintStart_toEndOf="@+id/movie_poster"
-        app:layout_constraintTop_toBottomOf="@+id/movie_title"
-        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,13 +20,13 @@ import okhttp3.Headers
 import org.json.JSONObject
 
 private const val API_KEY = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-private const val BASE_URL = "https://api.themoviedb.org/3/movie/now_playing"
-class LatestMovieFragment : Fragment(), OnListFragmentInteractionListener {
+private const val BASE_URL = "https://api.themoviedb.org/3/person/popular"
+class PopularActorsFragment : Fragment(), OnListFragmentInteractionListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_latest_movie_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_popular_actor_list, container, false)
         val progressBar = view.findViewById<View>(R.id.progress) as ContentLoadingProgressBar
         val recyclerView = view.findViewById<View>(R.id.list) as RecyclerView
         val context = view.context
@@ -54,13 +54,13 @@ class LatestMovieFragment : Fragment(), OnListFragmentInteractionListener {
                     val jsonData = jsonString.substring("jsonObject=".length)
                     val jsonObject = JSONObject(jsonData)
 
-                    val movieRawJSON : String = jsonObject.get("results").toString()
-                    val arrayMovieType = object : TypeToken<List<LatestMovie>>() {}.type
+                    val actorRawJSON : String = jsonObject.get("results").toString()
+                    val arrayActorType = object : TypeToken<List<PopularActor>>() {}.type
 
                     val gson = Gson()
 
-                    val movies : MutableList<LatestMovie> = gson.fromJson(movieRawJSON, arrayMovieType)
-                    recyclerView.adapter = LatestMovieRecyclerViewAdapter(movies, this@LatestMovieFragment)
+                    val actors : MutableList<PopularActor> = gson.fromJson(actorRawJSON, arrayActorType)
+                    recyclerView.adapter = PopularActorAdapter(actors, this@PopularActorsFragment)
                     progressBar.hide()
                     Log.d("LatestMovieFragment", "response successful")
 
@@ -76,7 +76,7 @@ class LatestMovieFragment : Fragment(), OnListFragmentInteractionListener {
                     progressBar.hide()
 
                     t?.message?.let {
-                        Log.e("LatestMovieFragment", errorResponse)
+                        Log.e("PopularActorsFragment", errorResponse)
                     }
                 }
             }]
@@ -84,8 +84,8 @@ class LatestMovieFragment : Fragment(), OnListFragmentInteractionListener {
 
     }
 
-    override fun onItemClick(item: LatestMovie) {
-        Toast.makeText(context, "test: " + item.title, Toast.LENGTH_LONG).show()
+    override fun onItemClick(item: PopularActor) {
+        Toast.makeText(context, "test: " + item.name, Toast.LENGTH_LONG).show()
     }
 
 }
