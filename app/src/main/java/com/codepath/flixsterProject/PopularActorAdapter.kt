@@ -59,6 +59,7 @@ class PopularActorAdapter (private val actors: List<PopularActor>,
                     intent.putExtra("name", actor.name)
                     intent.putExtra("actor_headshot", actor.profileImageUrl)
                     intent.putExtra("actor_dept", actor.known_for_dpt)
+                    //intent.putExtra("movie_list", actor.media?.title)
                     mView.context.startActivity(intent)
                 }
             }
